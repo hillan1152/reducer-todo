@@ -21,11 +21,9 @@ function ToDoForm({ dispatch }){
 
     return(
         <div>
-            <h2>Shitty Motherfucking ToDo List</h2>
+            <h2>Todo List</h2>
             <form onSubmit={submitItem}>
                 <input 
-                    type="text"
-                    className="form-input"
                     name="item"
                     value={item}
                     onChange={handleChanges}
