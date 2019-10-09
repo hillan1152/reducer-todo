@@ -1,5 +1,7 @@
 import React, { useReducer } from 'react';
-import { ToDoForm } from '../src/components/ToDoForm'
+import ToDoForm from '../src/components/ToDoForm'
+import { List } from '../src/components/List'
+
 
 import { reducer, initialState } from './reducers/reducer';
 import './App.css';
@@ -12,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <ToDoForm dispatch={dispatch}/>
+      <List dispatch={state}/>
     </div>
   );
 }

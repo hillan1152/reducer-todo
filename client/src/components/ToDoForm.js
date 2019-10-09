@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 
-export function ToDoForm({ dispatch }){
+function ToDoForm({ dispatch }){
     const [item, setItem] = useState('');
     console.log("this is an item", item);
 
@@ -10,16 +10,30 @@ export function ToDoForm({ dispatch }){
         setItem(e.target.value)
     }
 
+    const submitItem = e => {
+        e.preventDefault();
+        dispatch({
+            type: 'ADD_TODO',
+            payload: item
+        });
+        setItem("")
+    };
+
     return(
         <div>
-            <input 
-                type="text"
-                className="form-input"
-                name="item"
-                value={item}
-                onChange={handleChanges}
-            />
-            <button type="submit" onClick={() => dispatch({ type: 'ADD_TODO', payload: item})}>Add To List</button>
+            <h2>Shitty Motherfucking ToDo List</h2>
+            <form onSubmit={submitItem}>
+                <input 
+                    type="text"
+                    className="form-input"
+                    name="item"
+                    value={item}
+                    onChange={handleChanges}
+                />
+                <button>Add To List</button>
+            </form>
         </div>
     )
 }
+
+export default ToDoForm;
