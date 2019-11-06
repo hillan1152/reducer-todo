@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
 
-const TodoForm = ({ dispatch }) => {
-    const [newItem, setNewItem] = useState('') 
-    console.log(newItem)
+function TodoForm({ dispatch }){
+    const [item, setItem] = useState('');
+    console.log("this is an item", item);
 
     const handleChanges = e => {
-        setNewItem(e.target.value)
+        setItem(e.target.value)
     }
 
-    const handleSubmit = e => {
+    const submitItem = e => {
         e.preventDefault();
-        dispatch({ type: 'ADD_TODO', payload: newItem })
-        setNewItem('')
+        dispatch({
+            type: 'ADD_TODO',
+            payload: item
+        });
+        setItem("")
     };
 
     return(
-        <div className="todoForm">
-            <h3>Add To List</h3>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="name"
-                    value={newItem}
+        <div>
+            <h2>Todo List</h2>
+            <form onSubmit={submitItem}>
+                <input 
+                    name="item"
+                    value={item}
                     onChange={handleChanges}
                 />
-                <button>Add Another Item</button>
-            </form>   
+                <button>Add To List</button>
+            </form>
         </div>
     )
 }

@@ -1,20 +1,21 @@
 import React, { useReducer } from 'react';
-import { initialState, reducer } from '../reducers/reducer'
-import Todos from './Todos';
-import TodoForm from './TodoForm';
+import { initialState, reducer } from '../reducers/reducer';
+import Todos from '../components/Todos';
+import TodoForm from '../components/TodoForm';
 
-
-const TodoList = () => {
+function List(){
     const [list, dispatch] = useReducer(reducer, initialState);
-    console.log('This is TodoList', list)
+    console.log("This is the list", list)
     return(
-            <div>
-                <TodoForm dispatch={dispatch}/>
-                {list.map(todo => (
-                    <Todos key={todo.id} todo={todo} dispatch={dispatch}/>
-                ))} 
-            </div> 
-        )
-}
+        <div className="theList">
+            <TodoForm dispatch={dispatch}/>
+                <div className="main-todo-container">
+                    {list.map(todo => (
+                        <Todos key={todo.id} todo={todo} dispatch={dispatch} />
+                    ))}
+                </div>
+         </div>
+        );
+ };
 
-export default TodoList;
+ export default List;
