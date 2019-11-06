@@ -2,7 +2,7 @@ import React, { useState, useReducer } from 'react';
 
 import { initialState, reducer } from '../reducers/reducer';
 
-import Todos from './Todos';
+import TodoList from './TodoList';
 
 const TodoForm = () => {
     const [newItem, setNewItem] = useState("")
@@ -33,7 +33,7 @@ const TodoForm = () => {
                 />
                 <button type="submit">Add Another Item</button>
             </form>  
-            <Todos item={state} key={state.id}/>
+           
         </div>
     )
 }
