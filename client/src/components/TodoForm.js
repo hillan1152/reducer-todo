@@ -1,24 +1,18 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState } from 'react';
 
-import { initialState, reducer } from '../reducers/reducer';
+const TodoForm = ({ dispatch }) => {
+    const [newItem, setNewItem] = useState('') 
+    console.log(newItem)
 
-import TodoList from './TodoList';
-
-const TodoForm = () => {
-    const [newItem, setNewItem] = useState("")
-    const [state, dispatch] = useReducer(reducer, initialState)
-
-    console.log(state.item)
     const handleChanges = e => {
         setNewItem(e.target.value)
     }
 
-
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch({ type: 'ADD_TODO', payload: newItem || state.item })
-
-    }
+        dispatch({ type: 'ADD_TODO', payload: newItem })
+        setNewItem('')
+    };
 
     return(
         <div className="todoForm">
@@ -27,13 +21,11 @@ const TodoForm = () => {
                 <input
                     type="text"
                     name="name"
-                    id="item"
                     value={newItem}
                     onChange={handleChanges}
                 />
-                <button type="submit">Add Another Item</button>
-            </form>  
-           
+                <button>Add Another Item</button>
+            </form>   
         </div>
     )
 }

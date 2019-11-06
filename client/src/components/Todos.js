@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Todos = ({ state }) => {
-    console.log('This is for todos: ', state)
+const Todos = (props, { todo }) => {
+    console.log('this is todo', props)
     return (
-            <p>{}</p>
-      
+        <div>
+            <p>{props.item}</p>
+        </div>
     )
 }
 
